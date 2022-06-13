@@ -1,20 +1,18 @@
-import { TaskModel } from '../../models/task';
+import { TaskModel } from "../../models/task";
+import { useDispatch } from "react-redux";
+import * as ac from "../../reducers/tasks/action.creators";
 
-export function Task({
-    task,
-    toggleComplete,
-    deleteTask,
-}: {
-    task: TaskModel;
-    toggleComplete(id: TaskModel['id']): void;
-    deleteTask(id: TaskModel['id']): void;
-}) {
+export function Task({ task }: { task: TaskModel }) {
+    const dispatch = useDispatch();
+
     const handleChange = () => {
-        toggleComplete(task.id);
+        dispatch(ac.updateTaskAction(task));
+        // toggleComplete(task.id);
     };
 
     const handleClick = () => {
-        deleteTask(task.id);
+        // deleteTask(task.id);
+        dispatch(ac.deleteTaskAction(task));
     };
 
     return (

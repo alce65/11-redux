@@ -1,27 +1,33 @@
-import { SyntheticEvent, useState, useContext } from 'react';
-import { TodoContext } from '../../context/todo-context';
-import { TaskModel } from '../../models/task';
+import { SyntheticEvent, useState } from "react";
+import { useDispatch } from "react-redux";
+import * as ac from "../../reducers/tasks/action.creators";
+import { TaskModel } from "../../models/task";
+
 export function Add() {
-    const users = ['Pepe', 'Elena', 'Juan', 'Luisa'];
-    const { addTask } = useContext(TodoContext);
+    const users = ["Pepe", "Elena", "Juan", "Luisa"];
+    const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
-        title: '',
-        responsible: '',
+        title: "",
+        responsible: "",
         isOk: false,
-        importance: '',
+        importance: "",
     });
 
     function handleSubmit(ev: SyntheticEvent) {
         ev.preventDefault();
-        console.log('Guardando', formData);
-        addTask(new TaskModel(formData.title, formData.responsible));
+        console.log("Guardando", formData);
+        dispatch(
+            ac.addTaskAction(
+                new TaskModel(formData.title, formData.responsible)
+            )
+        );
     }
 
     function handleChange(ev: SyntheticEvent) {
         const element = ev.target as HTMLFormElement;
         const value =
-            element.type === 'checkbox' ? element.checked : element.value;
+            element.type === "checkbox" ? element.checked : element.value;
         setFormData({ ...formData, [element.name]: value });
     }
 

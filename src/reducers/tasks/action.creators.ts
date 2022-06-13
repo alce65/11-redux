@@ -1,7 +1,6 @@
+import { createAction } from "@reduxjs/toolkit";
 import { TaskModel } from "../../models/task";
 import { actionTypes } from "./action.types";
-
-import { createAction } from "@reduxjs/toolkit";
 
 export interface iAction {
     type: actionTypes;

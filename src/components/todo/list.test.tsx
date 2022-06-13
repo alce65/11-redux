@@ -1,19 +1,15 @@
-import { render, screen } from '@testing-library/react';
-import { TodoContext } from '../../context/todo-context';
-import { List } from './list';
+import { render, screen } from "@testing-library/react";
 
-test('should first', () => {
-    const context = {
-        tasks: [],
-        tasksCompleted: 0,
-        addTask: jest.fn(),
-        deleteTask: jest.fn(),
-        toggleComplete: jest.fn(),
-    };
+import { List } from "./list";
 
-    render(
-        <TodoContext.Provider value={context}>
-            <List></List>
-        </TodoContext.Provider>
-    );
+test("should first", () => {
+    // const context = {
+    //     tasks: [],
+    //     tasksCompleted: 0,
+    //     addTask: jest.fn(),
+    //     deleteTask: jest.fn(),
+    //     toggleComplete: jest.fn(),
+    // };
+
+    render(<List></List>);
 });

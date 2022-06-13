@@ -1,7 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
+import HomePage from "../../pages/home";
 
-function App() {
+export function App() {
     return (
         <div className="App">
             <header className="App-header">
@@ -48,9 +49,7 @@ function App() {
                     </a>
                 </span>
             </header>
+            <HomePage></HomePage>
         </div>
     );
 }
-
-export default App;
-
